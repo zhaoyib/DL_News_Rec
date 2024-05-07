@@ -14,7 +14,7 @@
 <p align="center">
   <strong style="background-color: green;">English</strong>
   |
-  <a href="./READM_zh.md" target="_Self">简体中文</a>
+  <a href="./README_zh.md" target="_Self">简体中文</a>
 </p>
 
 <details open="open">
