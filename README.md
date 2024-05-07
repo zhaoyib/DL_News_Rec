@@ -71,14 +71,16 @@ pip install -r requirements.txt
 
 如果想要进行实验1、2，那么首先请执行下列代码：
 ```
+$ export PYTHONPATH=$(pwd)/experiment_fixed:$PYTHONPATH
 ```
-此后，请配置你的相关配置文件，
+此后，请配置你的相关配置文件，然后在`Total_Pipeline.ipynb`中进行
 
 
 如果想要进行实验3、4，那么首先请执行下列代码：
 ```
+$ export PYTHONPATH=$(pwd)/experiment_finetuning/src:$PYTHONPATH
 ```
-如果仅希望验证实验3的结果，那么请执行`evaluate.py`，其会在`MIND Small`的验证集上进行验证，并且输出 `AUC`, `MRR`, `nDCG@5`, `nDCG@10`四个评价指标。
+如果仅希望验证实验3的结果，那么请在下载并配置好模型路径之后执行`evaluate.py`，其会在`MIND Small`的验证集上进行验证，并且输出 `AUC`, `MRR`, `nDCG@5`, `nDCG@10`四个评价指标。
 如果希望在数据集上进行微调，那么请执行`train.py`，请预先组织好你的文件结构，以免出现意外错误。
 
 ## 🍎 实验结果
@@ -93,21 +95,50 @@ pip install -r requirements.txt
 
 | 实验 | AUC | MRR | nDCG@5 | nDCG@10 |
 |:----:|:---:|:---:|:------:|:------:|
-| 随机预测 | 0.5 | 0.2 | 0.23 | 0.24 |
-| 实验1 | 0.503 | 0.201 | 0.22 | 0.23 |
-| 实验2 | 0.501 | 0.198 | 0.22 | 0.24 |
-| 实验3 | 0.63 | 0.28 | 0.30 | 0.38 |
-| 实验4 | 0.68 | 0.31 | 0.33 | 0.20 |
+| 随机预测 | 0.500 | 0.201 | 0.203 | 0.267 |
+| 实验1 | 0.494 | 0.217 | 0.222 | 0.285 |
+| 实验2 | 0.505 | 0.222 | 0.226 | 0.289 |
+| 实验3 | 0.638 | 0.254 | 0.281 | 0.343 |
+| 实验4 | 0.689 | 0.306 | 0.336 | 0.400 |
 
 ## 📖 实验分析
 
+首先，关于实验的公平性，在这里先做出如下分析：<br>
+
+实验共计训练了四个模型，为了保证对比的公平性，每个模型的训练时长都是29小时左右，具体而言，针对实验1、2的模型，其训练了20个epoch，共计30个小时；针对实验3的模型，训练了2个epoch，共计29小时，针对实验4的模型，训练了3个epcoh，共计28.5小时。同时，模型结构方面也尽可能地确保了四个模型的可训练参数量基本一致，能够最大程度确保其公平性。<br>
+
+于实验1、2，其结果基本一致，尝试修改模型超参数、损失函数权重、学习率变化函数、批次大小等训练相关设置之后，得到的最优模型在训练1500个批次，64000个样本的学习之后，损失值保持在0.6左右震荡，并且在后续的几十万个批次中不再下降。与二分类随机预测的0.96的损失值相比，我们可以认为其从中学习到了一定的知识，并且已经收敛。而其在验证集上的指标显示其AUC仅有0.506，略优于随机预测的0.5，而其余三个评价指标也均没有明显优于随机预测。<br>
+
+对于实验3，在训练了2个epoch之后，损失基本收敛，在验证集上验证得到其AUC为0.638，MRR为0.255，NDCG@5为0.280，NDCG@10为0.343，显著优于未经微调的模型效果。<br>
+
+对于实验4，虽然其仅仅使用了文本信息，但是在训练3个epoch之后，在验证集上得到其AUC为0.689，MRR为0.306，NDCG@5为0.336，NDCG@10为0.400，可以看到其效果优于多模态的微调模型。<br>
+
+实验同样考虑了是否是由于多模态模型参数量大，2个epoch没有完全收敛导致了这样的问题，但是在训练了3个epoch之后，其验证集上AUC、MRR等指标均没有提升，且训练集Loss也并没有下降，训练集grad_norm指标也始终在一个较大的值附近浮动[36]，因此可以判断2个epoch的时候模型实际上已经收敛，实验对比是公平的。<br>
+
 ### 微调的影响
+
+首先对比上述实验1、2，可以发现在冻结权重的情况下，使用多模态同时预训练的预训练模型和使用分别预训练的模型并不会有实际上的区别，二者均不能够胜任推荐系统的召回器的工作。<br>
+
+但是通过对比实验2、3，我们可以发现，如果能够在新闻推荐数据集上对我们的预训练模型进行微调，那么其可以提升其推荐性能。受限于显卡资源，我并没有在新闻推荐数据集上对BLIP这类相对较大的多模态预训练模型进行微调，这可能是后续进一步实验的可能探索方向<br>
 
 ### 多模态的影响
 
+对比实验3、4，我们可以发现：图片模态的引入损害了模型的性能，相比于仅使用文本信息的推荐系统，多模态的推荐系统不仅训练开销大、时间长，而且效果还弱于单一模态的推荐系统。造成这一劣势的原因可能主要有两方面：其一是特征融合的效果可能并不够好，直接使用哈达玛积计算出来的多模态表征的表达能力并不足；其二是数据集的图片缺失过多，MIND Small数据集中涉及到的新闻共计65238条，其中有36546条图片信息缺失，占总新闻数目的56%。即使是依照论文 Why do we click的处理方式，将标题排版在空白图右侧，ViT也很难从中提取出有效的信息。<br>
+
+因此，构建高质量的新闻推荐数据集也是推动后续研究的重要基础之一。<br>
+
 ## ⚙️ 模型权重下载
 
+由于实验1、2所训练得到的模型并不有效，因此在这里就不提供实验1、2中的模型。仅提供实验3、4的模型，可以通过下面的百度网盘链接下载：<br>
+
+[模型下载链接]()
+
 ## 📈 后续工作
+
+1. 多模态预训练模型在推荐系统中微调的方法研究，本实验仅使用了最基础的全参数微调，或许后续实验可以探究LoRA在预训练模型上的微调效果，或者寻找更先进的微调算法。
+2. 多模态新闻推荐数据集的构建，本实验的最大限制就在于多模态新闻数据集的缺乏，大部分新闻推荐相关的论文都使用了私有的或者商业数据集，并不对外公开，一个开源的高质量多模态新闻推荐数据集将大幅推动新闻推荐系统算法的研究。
+3. 实时根据用户的点击信息更新其偏好算法研究，本实验仅仅在静态的数据集上进行训练，而实际应用中，用户每时每刻都在产生新的数据，如何迅速更新用户的特征、偏好同样是新闻推荐系统设计中的一大挑战。 
+4. 算法模型效率优化研究，实验1、2中模型训练开销过大，是否有什么方法能够减少模型的训练开销。
 
 ## 🧲 联系作者
 
@@ -131,4 +162,21 @@ pip install -r requirements.txt
 
 ## 🔐 授权许可
 
+本项目授权许可为[Apache 2.0 License](./LICENSE)
+
 ## 🔗 参考文献
+
+[1] 王喆 《深度学习推荐系统》[M] 北京：电子工业出版社，2020.3 
+[2] Elkan C. The foundations of cost-sensitive learning[J]. International joint conference on artificial intelligence: volume 17. Lawrence Erlbaum Associates Ltd, 2001, 973-978. 
+[3] Li, J., Li, D., Xiong, C., & Hoi, S. Blip: Bootstrapping language-image pre-training for unified vision-language understanding and generation[C]. International conference on machine learning, 2022: 12888-12900.
+[4] Liu X Y, Zhou Z H. The influence of class imbalance on cost-sensitive learning: An empirical study[C]. Sixth International Conference on Data Mining (ICDM’06), IEEE, 2006: 970-974.
+[5] Lv, Q., Josephson, W., Wang, Z., Charikar, M., & Li, K. Multi-probe LSH: efficient indexing for high-dimensional similarity search[C]. Proceedings of the 33rd international conference on Very large data bases, 2007: 950-961.
+[6] Neve, J., & McConville, R. ImRec: Learning reciprocal preferences using images[C]. Proceedings of the 14th ACM Conference on Recommender Systems, 2020: 170-179.
+[7] Qiu, R., Huang, Z., Yin, H., & Wang, Z. Contrastive learning for representation degeneration problem in sequential recommendation[C]. Proceedings of the fifteenth ACM international conference on web search and data mining, 2022: 813-823.
+[8] Wang, X., He, X., Nie, L., & Chua, T.-S. Item Silk Road: Recommending Items from Information Domains to Social Users[C]. Proceedings of the 40th International ACM SIGIR Conference on Research and Development in Information Retrieval, 2017. https://doi.org/10.1145/3077136.3080771
+[9] Wu, F., Qiao, Y., Chen, J. H., Wu, C., Qi, T., Lian, J., ... & Zhou, M. Mind: A large-scale dataset for news recommendation[C]. Proceedings of the 58th annual meeting of the association for computational linguistics, 2020: 3597-3606.
+[10] Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning. MIT Press.  [E] https://www.deeplearningbook.org/
+[11] Li, R., Deng, W., Cheng, Y., Yuan, Z., Zhang, J., & Yuan, F. Exploring the Upper Limits of Text-Based Collaborative Filtering Using Large Language Models: Discoveries and Insights [E] https://arxiv.org/abs/2305.11700
+[12] Paszke, A., Gross, S., Chintala, S., Chanan, G., Yang, E., DeVito, Z., Lin, Z., Desmaison, A., Antiga, L., & Lerer, A. Automatic differentiation in PyTorch [E] https://pytorch.org/docs/stable/index.html.
+[13] Wu, C., Wu, F., Qi, T., & Huang, Y. Empowering News Recommendation with Pre-trained Language Models [E] https://arxiv.org/abs/2104.07413
+[14] Wu, C., et al. NewsBERT: Distilling Pre-trained Language Model for Intelligent News Application. [E] https://arxiv.org/abs/2102.04887 2021
