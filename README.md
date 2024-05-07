@@ -10,6 +10,13 @@
     </a>
 </div>
 <br>
+
+<p align="center">
+  <strong style="background-color: green;">简体中文</strong>
+  |
+  <a href="./READM.md" target="_Self">English</a>
+</p>
+
 <details open="open">
 <summary>点击目录跳转</summary>
 
