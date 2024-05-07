@@ -30,7 +30,7 @@
 </details>
 <br>
 
-## 实验背景
+## 💡 实验背景
 
 在信息爆炸的今天，人们能够越来越轻松地获取大量的信息资源，但是由于新增信息过于庞大，人们难以找到有用的感兴趣的内容。而新闻推荐系统可以通过用户的历史点击、浏览、点赞等行为对用户的偏好进行推断，进而为用户提供个性化的推荐服务，提高用户的体验。<br>
 
@@ -47,6 +47,72 @@
 3. 使用Bert-base-uncased以及Vit-base-patch-16-224对新闻进行特征提取，并且在MIND-Small数据集上进行微调，评估微调带来的影响。
 4. 仅使用Bert-base-uncased对新闻特征进行提取，在MIND-Small数据集上使用和实验3相同的超参数进行微调，评估图像模态引入带来的影响。<br>
 
-## 环境配置
+## 🌐 环境配置
 
-python
+本实验租用了服务器GPU，使用了单卡RTX 4090 (24GB)，并且配置了90GB的内存。<br>
+
+本实验使用`python = 3.8.10`，可以在conda中执行如下命令创建本实验所需的虚拟环境：
+```
+conda create --name NRMS python=3.8 && activate NRMS
+```
+
+本实验的python库依赖已经汇总在`requirements.txt`文件中，请执行下面的命令行命令来安装依赖：
+```
+pip install -r requirements.txt
+```
+
+*Tips:*推荐手动安装`torch`以及相关CUDA版本，避免自动安装CPU版本的`torch`
+
+文件结构：
+```
+```
+
+## 🚀 快速开始
+
+如果想要进行实验1、2，那么首先请执行下列代码：
+```
+```
+此后，请配置你的相关配置文件，
+
+
+如果想要进行实验3、4，那么首先请执行下列代码：
+```
+```
+如果仅希望验证实验3的结果，那么请执行`evaluate.py`，其会在`MIND Small`的验证集上进行验证，并且输出 `AUC`, `MRR`, `nDCG@5`, `nDCG@10`四个评价指标。
+如果希望在数据集上进行微调，那么请执行`train.py`，请预先组织好你的文件结构，以免出现意外错误。
+
+## 🍎 实验结果
+
+## 📖 实验分析
+
+### 微调的影响
+
+### 多模态的影响
+
+## ⚙️ 模型权重下载
+
+## 📈 后续工作
+
+## 🧲 联系作者
+
+如果有任何问题，请在Github上提出Issue，也可以联系作者 赵艺博@华东师范大学<br>
+10203330408@stu.ecnu.edu.cn
+
+## ✏️ 引用本项目
+
+如果本项目对你有帮助或者有启发，可以按照如下格式引用：<br>
+```
+@misc{YiboZhao2024Thesis,
+  author       = {Yibo Zhao},
+  title        = {Multimodal News Recommendation System},
+  howpublished = {Bachelor's Thesis},
+  year         = 2024,
+  school       = {East China Normal University},
+  address      = {Shanghai China},
+  month        = May
+}
+```
+
+## 🔐 授权许可
+
+## 🔗 参考文献
