@@ -3,7 +3,7 @@
  * @Author: Yibo Zhao
  * @Date: 2024-05-07 16:51:24
 -->
-<h1 align="center">多模态深度学习新闻推荐系统</h1>
+<h1 align="center">Multimodal Integrated News Recommendation System</h1>
 <div align="center">
     <a href="./LICENSE">
       <img src="https://img.shields.io/badge/license-Apache--2.0-yellow">
@@ -18,21 +18,21 @@
 </p>
 
 <details open="open">
-<summary>点击目录跳转</summary>
+<summary>Click to Open Contents</summary>
 
-- <a href="#-Experimental Background" target="_Self">💡 Experimental Background</a>
-- <a href="#-环境配置" target="_Self">🌐 环境配置</a>
-- <a href="#-快速开始" target="_Self">🚀 快速开始</a>
-- <a href="#-实验结果" target="_Self">🍎 实验结果</a>
-- <a href="#-实验分析" target="_Self">📖 实验分析</a>
-  - <a href="#微调的影响" target="_Self">微调的影响</a>
-  - <a href="#多模态的影响" target="_Self">多模态的影响</a>
-- <a href="#-模型权重下载" target="_Self">⚙️ 模型权重下载</a>
-- <a href="#-后续工作" target="_Self">📈 后续工作</a>
-- <a href="#-联系作者" target="_Self">🧲 联系作者</a>
-- <a href="#-引用本实验" target="_Self">✏️ 引用本实验</a>
-- <a href="#-授权许可" target="_Self">🔐 授权许可</a>
-- <a href="#-参考文献" target="_Self">🔗 参考文献</a>
+- <a href="#-Experimental-Background" target="_Self">💡 Experimental Background</a>
+- <a href="#-Environment-Setup" target="_Self">🌐 Environment Setup</a>
+- <a href="#-Quick-Start" target="_Self">🚀 Quick Start</a>
+- <a href="#-Experimental-Results" target="_Self">🍎 Experimental Results</a>
+- <a href="#-Experimental-Analysis" target="_Self">📖 Experimental Analysis</a>
+  - <a href="#Impact-of-Fine-Tuning" target="_Self">Impact of Fine-Tuning</a>
+  - <a href="#Impact-of-Multimodality" target="_Self">Impact of Multimodality</a>
+- <a href="#-Model-Weights-Download" target="_Self">⚙️ Model Weights Download</a>
+- <a href="#-Future-Work" target="_Self">📈 Future Work</a>
+- <a href="#-Contact-the-Author" target="_Self">🧲 Contact the Author</a>
+- <a href="#-Citing-This-Project" target="_Self">✏️ Citing This Project</a>
+- <a href="#-License" target="_Self">🔐 License</a>
+- <a href="#-References" target="_Self">🔗 References</a>
 
 </details>
 <br>
@@ -134,11 +134,11 @@ Comparing Experiment 3 with Experiment 4, it is found that the introduction of t
 
 Therefore, constructing a high-quality news recommendation dataset is also one of the important foundations for promoting subsequent research.<br>
 
-## ⚙️ 模型权重下载
+## ⚙️ Model Weights Download
 
 Since the models trained in Experiments 1 and 2 were not effective, the models from these experiments will not be provided here. Only the models from Experiments 3 and 4 are available for download through the following Baidu Pan link:<br>
 
-[模型下载链接]()
+[Link]()
 
 ## 📈 Future Work
 
@@ -171,7 +171,7 @@ If this project has been helpful or inspirational to you, you can cite it in the
 
 This project is licensed under the [Apache 2.0 License](./LICENSE)
 
-## 🔗 参考文献
+## 🔗 References
 
 [1]  Wang, Z. "Deep Learning for Recommender Systems" [M]. Beijing: Publishing House of Electronics Industry, 2020.3<br>
 
