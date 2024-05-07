@@ -166,17 +166,17 @@ $ export PYTHONPATH=$(pwd)/experiment_finetuning/src:$PYTHONPATH
 
 ## 🔗 参考文献
 
-[1] 王喆 《深度学习推荐系统》[M] 北京：电子工业出版社，2020.3 
-[2] Elkan C. The foundations of cost-sensitive learning[J]. International joint conference on artificial intelligence: volume 17. Lawrence Erlbaum Associates Ltd, 2001, 973-978. 
-[3] Li, J., Li, D., Xiong, C., & Hoi, S. Blip: Bootstrapping language-image pre-training for unified vision-language understanding and generation[C]. International conference on machine learning, 2022: 12888-12900.
-[4] Liu X Y, Zhou Z H. The influence of class imbalance on cost-sensitive learning: An empirical study[C]. Sixth International Conference on Data Mining (ICDM’06), IEEE, 2006: 970-974.
-[5] Lv, Q., Josephson, W., Wang, Z., Charikar, M., & Li, K. Multi-probe LSH: efficient indexing for high-dimensional similarity search[C]. Proceedings of the 33rd international conference on Very large data bases, 2007: 950-961.
-[6] Neve, J., & McConville, R. ImRec: Learning reciprocal preferences using images[C]. Proceedings of the 14th ACM Conference on Recommender Systems, 2020: 170-179.
-[7] Qiu, R., Huang, Z., Yin, H., & Wang, Z. Contrastive learning for representation degeneration problem in sequential recommendation[C]. Proceedings of the fifteenth ACM international conference on web search and data mining, 2022: 813-823.
-[8] Wang, X., He, X., Nie, L., & Chua, T.-S. Item Silk Road: Recommending Items from Information Domains to Social Users[C]. Proceedings of the 40th International ACM SIGIR Conference on Research and Development in Information Retrieval, 2017. https://doi.org/10.1145/3077136.3080771
-[9] Wu, F., Qiao, Y., Chen, J. H., Wu, C., Qi, T., Lian, J., ... & Zhou, M. Mind: A large-scale dataset for news recommendation[C]. Proceedings of the 58th annual meeting of the association for computational linguistics, 2020: 3597-3606.
-[10] Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning. MIT Press.  [E] https://www.deeplearningbook.org/
-[11] Li, R., Deng, W., Cheng, Y., Yuan, Z., Zhang, J., & Yuan, F. Exploring the Upper Limits of Text-Based Collaborative Filtering Using Large Language Models: Discoveries and Insights [E] https://arxiv.org/abs/2305.11700
-[12] Paszke, A., Gross, S., Chintala, S., Chanan, G., Yang, E., DeVito, Z., Lin, Z., Desmaison, A., Antiga, L., & Lerer, A. Automatic differentiation in PyTorch [E] https://pytorch.org/docs/stable/index.html.
-[13] Wu, C., Wu, F., Qi, T., & Huang, Y. Empowering News Recommendation with Pre-trained Language Models [E] https://arxiv.org/abs/2104.07413
-[14] Wu, C., et al. NewsBERT: Distilling Pre-trained Language Model for Intelligent News Application. [E] https://arxiv.org/abs/2102.04887 2021
+[1] 王喆 《深度学习推荐系统》[M] 北京：电子工业出版社，2020.3 <br>
+[2] Elkan C. The foundations of cost-sensitive learning[J]. International joint conference on artificial intelligence: volume 17. Lawrence Erlbaum Associates Ltd, 2001, 973-978. <br>
+[3] Li, J., Li, D., Xiong, C., & Hoi, S. Blip: Bootstrapping language-image pre-training for unified vision-language understanding and generation[C]. International conference on machine learning, 2022: 12888-12900.<br>
+[4] Liu X Y, Zhou Z H. The influence of class imbalance on cost-sensitive learning: An empirical study[C]. Sixth International Conference on Data Mining (ICDM’06), IEEE, 2006: 970-974.<br>
+[5] Lv, Q., Josephson, W., Wang, Z., Charikar, M., & Li, K. Multi-probe LSH: efficient indexing for high-dimensional similarity search[C]. Proceedings of the 33rd international conference on Very large data bases, 2007: 950-961.<br>
+[6] Neve, J., & McConville, R. ImRec: Learning reciprocal preferences using images[C]. Proceedings of the 14th ACM Conference on Recommender Systems, 2020: 170-179.<br>
+[7] Qiu, R., Huang, Z., Yin, H., & Wang, Z. Contrastive learning for representation degeneration problem in sequential recommendation[C]. Proceedings of the fifteenth ACM international conference on web search and data mining, 2022: 813-823.<br>
+[8] Wang, X., He, X., Nie, L., & Chua, T.-S. Item Silk Road: Recommending Items from Information Domains to Social Users[C]. Proceedings of the 40th International ACM SIGIR Conference on Research and Development in Information Retrieval, 2017. https://doi.org/10.1145/3077136.3080771<br>
+[9] Wu, F., Qiao, Y., Chen, J. H., Wu, C., Qi, T., Lian, J., ... & Zhou, M. Mind: A large-scale dataset for news recommendation[C]. Proceedings of the 58th annual meeting of the association for computational linguistics, 2020: 3597-3606.<br>
+[10] Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning. MIT Press.  [E] https://www.deeplearningbook.org/<br>
+[11] Li, R., Deng, W., Cheng, Y., Yuan, Z., Zhang, J., & Yuan, F. Exploring the Upper Limits of Text-Based Collaborative Filtering Using Large Language Models: Discoveries and Insights [E] https://arxiv.org/abs/2305.11700<br>
+[12] Paszke, A., Gross, S., Chintala, S., Chanan, G., Yang, E., DeVito, Z., Lin, Z., Desmaison, A., Antiga, L., & Lerer, A. Automatic differentiation in PyTorch [E] https://pytorch.org/docs/stable/index.html.<br>
+[13] Wu, C., Wu, F., Qi, T., & Huang, Y. Empowering News Recommendation with Pre-trained Language Models [E] https://arxiv.org/abs/2104.07413<br>
+[14] Wu, C., et al. NewsBERT: Distilling Pre-trained Language Model for Intelligent News Application. [E] https://arxiv.org/abs/2102.04887 2021<br>
