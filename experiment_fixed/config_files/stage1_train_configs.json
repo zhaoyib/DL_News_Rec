@@ -1,0 +1,14 @@
+{
+    "using_lavis":false,
+    "mode":"train",
+    "data_path":"autodl-tmp/dataset",
+    "batch_size":256,
+    "model_set":{
+        "visual_model_name":"facebook/dinov2-base",
+        "text_model_name":"maidalun1020/bce-embedding-base_v1",
+        "access_token":"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"
+        },
+    "emb_path":"autodl-tmp/embeddings/news_embedding_title_train_hadamard.pkl",
+    "fusion_method":"HP",
+    "user_path":"autodl-tmp/users/user_batches_train_hadamard.pkl"
+}

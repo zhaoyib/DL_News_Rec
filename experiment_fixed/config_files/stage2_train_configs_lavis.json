@@ -1,0 +1,26 @@
+{
+    "mode":"train",
+    "model_name":"4-18_lavis",
+    "emb_path":"autodl-tmp/embeddings/news_embedding_title_train_lavis.pkl",
+    "user_path":"autodl-tmp/users/user_batches_train_lavis.pkl",
+    "batch_size":128,
+    "data_path":"autodl-tmp/dataset",
+    "start_epoch":0,
+    "end_epoch":20,
+    "model_path":"",
+    "model_set":{
+        "encoder_num":4,
+        "d_model":768,
+        "n_heads":8,
+        "dim_ffm":1024,
+        "dropout":0.1,
+        "batch_first":true,
+        "lr":0.001
+    },
+    "valid_freq":1,
+    "display_freq":1,
+    "trained_model_folder":"autodl-tmp/trained_models/",
+    "ckp_folder":"autodl-tmp/checkpoints/",
+    "ckp_epoch":1,
+    "res_folder":"autodl-tmp/res/"
+}
